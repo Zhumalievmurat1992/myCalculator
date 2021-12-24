@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView Tv_Result;
-    private Integer first, second;
+    private Double first, second;
     private boolean isClickOperation = false;
     private String operetion;
 
@@ -137,8 +138,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_clear:
                 Tv_Result.setText("0");
                 isClickOperation = false;
-                first = 0;
-                second = 0;
+                first = 0.0;
+                second = 0.0;
                 break;
         }
     }
@@ -147,38 +148,38 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
 
             case R.id.btn_minus:
-                first = Integer.parseInt(Tv_Result.getText().toString());
+                first = Double.parseDouble(Tv_Result.getText().toString());
                 isClickOperation = true;
                 operetion = "-";
                 break;
             case R.id.plus:
-                first = Integer.parseInt(Tv_Result.getText().toString());
+                first = Double.parseDouble(Tv_Result.getText().toString());
                 isClickOperation = true;
                 operetion = "+";
                 break;
             case R.id.btn_umnosh:
-                first = Integer.parseInt(Tv_Result.getText().toString());
+                first = Double.parseDouble(Tv_Result.getText().toString());
                 isClickOperation = true;
                 operetion = "*";
                 break;
             case R.id.btn_delit:
-                first = Integer.parseInt(Tv_Result.getText().toString());
+                first = Double.parseDouble(Tv_Result.getText().toString());
                 isClickOperation = true;
                 operetion = "/";
                 break;
             case R.id.btn_procent:
-                first = Integer.parseInt(Tv_Result.getText().toString());
+                first = Double.parseDouble(Tv_Result.getText().toString());
                 isClickOperation = true;
                 operetion = "%";
                 break;
             case R.id.tochka:
-                first = Integer.parseInt(Tv_Result.getText().toString());
+                first = Double.parseDouble(Tv_Result.getText().toString());
                 isClickOperation = true;
                 operetion = ".";
                 break;
             case R.id.btn_equals:
-                second = Integer.parseInt(Tv_Result.getText().toString());
-                Integer result = 0;
+                second = Double.parseDouble(Tv_Result.getText().toString());
+                Double result = 0.0;
                 switch (operetion) {
                     case "+":
                         result = first + second;
