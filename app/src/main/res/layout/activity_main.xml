@@ -201,11 +201,12 @@
 
 
             <com.google.android.material.button.MaterialButton
-                android:onClick="onClickOperation"
+                android:onClick="onClickNumber"
                 android:id="@+id/tochka"
                 style="@style/Button.Grey.Dark"
                 android:layout_marginHorizontal="18dp"
-                android:text="." />
+                android:text="."
+                android:gravity="center"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_equals"

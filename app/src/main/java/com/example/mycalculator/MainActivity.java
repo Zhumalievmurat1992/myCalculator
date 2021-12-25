@@ -23,6 +23,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickNumber(View view) {
         switch (view.getId()) {
+            case R.id.tochka:
+                if (Tv_Result.getText().toString().equals("0")) {
+                    Tv_Result.setText(".");
+                } else {
+                    Tv_Result.append(".");
+                }
+//                if (isClickOperation) {
+//                    Tv_Result.setText(".");
+//                }
+
+                break;
             case R.id.btn_zero:
                 if (Tv_Result.getText().toString().equals("0")) {
                     Tv_Result.setText("0");
@@ -172,20 +183,17 @@ public class MainActivity extends AppCompatActivity {
                 isClickOperation = true;
                 operetion = "%";
                 break;
-            case R.id.tochka:
-                first = Double.parseDouble(Tv_Result.getText().toString());
-                isClickOperation = true;
-                operetion = ".";
-                break;
+//            case R.id.tochka:
+//                first = Double.parseDouble(Tv_Result.getText().toString());
+//                isClickOperation = true;
+//                operetion = ",";
+//                break;
             case R.id.btn_equals:
                 second = Double.parseDouble(Tv_Result.getText().toString());
                 Double result = 0.0;
                 switch (operetion) {
                     case "+":
                         result = first + second;
-                        break;
-                    case "*":
-                        result = first * second;
                         break;
                     case "-":
                         result = first - second;
@@ -196,10 +204,11 @@ public class MainActivity extends AppCompatActivity {
                     case "%":
                         result = first % second;
                         break;
-                    case ".":
-                        result = second;
-                        break;
+//                   case ",":
+//                        result = second;
+//                       break;
                 }
+
                 Tv_Result.setText(result.toString());
                 isClickOperation = true;
 
