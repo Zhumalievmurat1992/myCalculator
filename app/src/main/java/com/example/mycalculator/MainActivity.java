@@ -2,9 +2,14 @@ package com.example.mycalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import java.text.DecimalFormat;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -13,12 +18,23 @@ public class MainActivity extends AppCompatActivity {
     private Double first, second;
     private boolean isClickOperation = false;
     private String operetion;
+//    private View second2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Tv_Result = findViewById(R.id.result);
+        findViewById(R.id.second2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                String text = ((TextView) findViewById(R.id.result)).getText().toString();
+                intent.putExtra("text", text);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     public void onClickNumber(View view) {
@@ -145,9 +161,11 @@ public class MainActivity extends AppCompatActivity {
                     Tv_Result.setText("9");
                 }
                 isClickOperation = false;
+
                 break;
             case R.id.btn_clear:
                 Tv_Result.setText("0");
+//                second2.setVisibility(View.INVISIBLE);
                 isClickOperation = false;
                 first = 0.0;
                 second = 0.0;
@@ -156,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickOperation(View view) {
+//        second2.setVisibility(View.INVISIBLE);
         switch (view.getId()) {
 
             case R.id.btn_minus:
@@ -189,14 +208,19 @@ public class MainActivity extends AppCompatActivity {
 //                operetion = ",";
 //                break;
             case R.id.btn_equals:
+//                second2.setVisibility(view.getVisibility());
                 second = Double.parseDouble(Tv_Result.getText().toString());
                 Double result = 0.0;
+
                 switch (operetion) {
                     case "+":
                         result = first + second;
                         break;
                     case "-":
                         result = first - second;
+                        break;
+                    case "*":
+                        result = first * second;
                         break;
                     case "/":
                         result = first / second;
@@ -210,9 +234,13 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Tv_Result.setText(result.toString());
+//                Tv_Result.setText(new DecimalFormat("").format(result));
+//                second2.setVisibility(view.getVisibility());
                 isClickOperation = true;
 
                 break;
+
+
         }
     }
 }
