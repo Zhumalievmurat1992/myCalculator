@@ -25,9 +25,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Tv_Result = findViewById(R.id.result);
+//        Button button= findViewById(R.id.second2);
         findViewById(R.id.second2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                Button button = findViewById(R.id.second2);
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 String text = ((TextView) findViewById(R.id.result)).getText().toString();
                 intent.putExtra("text", text);
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickNumber(View view) {
+        Button btn = findViewById(R.id.second2);
+        btn.setVisibility(View.INVISIBLE);
         switch (view.getId()) {
             case R.id.tochka:
                 if (Tv_Result.getText().toString().equals("0")) {
@@ -165,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_clear:
                 Tv_Result.setText("0");
-//                second2.setVisibility(View.INVISIBLE);
+               btn.setVisibility(View.INVISIBLE);
                 isClickOperation = false;
                 first = 0.0;
                 second = 0.0;
@@ -174,7 +178,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickOperation(View view) {
-//        second2.setVisibility(View.INVISIBLE);
+        Button btn = findViewById(R.id.second2);
+          btn.setVisibility(View.INVISIBLE);
         switch (view.getId()) {
 
             case R.id.btn_minus:
@@ -208,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
 //                operetion = ",";
 //                break;
             case R.id.btn_equals:
-//                second2.setVisibility(view.getVisibility());
+                btn.setVisibility(view.getVisibility());
                 second = Double.parseDouble(Tv_Result.getText().toString());
                 Double result = 0.0;
 
@@ -235,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Tv_Result.setText(result.toString());
 //                Tv_Result.setText(new DecimalFormat("").format(result));
-//                second2.setVisibility(view.getVisibility());
+                btn.setVisibility(view.getVisibility());
                 isClickOperation = true;
 
                 break;
